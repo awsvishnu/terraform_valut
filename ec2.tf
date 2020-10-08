@@ -1,8 +1,8 @@
 #---------------Key Pair---------------
 
-resource "aws_key_pair" "tform" {
-  key_name   = "tform"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDkbLoljpG/xlgGmpdmn8F1XkDMtOVtzVt2TKGJenQelFMgfuy939Co+6vdDx4jVD/Fp9pLYcTTw6cbRxQ7NBhf5QVvlVNn5avyhCMr76VOufW5WSDVEsDwGHzPRlk5qxEjfuLflhKRJgJNJof2jvkVscgbizzLrEDE4PxlVAVea2DXIBB3DuXxJcAyW57lyjQklhUflIORWBHq07NINXtL7sRUcgduHys3JA+N0VueSpdnsDK6Msg1bEN1GUetIx8m7XPVa94T5N94hUscoew5zSTI8ARcRCQ4mgM1RMrQgIZmzeiIGEYPWI4nr6Vy0sEx6dFEJFObBwNLM+z3EqlX ec2-user@ip-172-31-43-43.us-east-2.compute.internal"
+resource "aws_key_pair" "vault_key" {
+  key_name   = "vault_key"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLgHhkLXy8iTSFLlxfVveSuMxW5cAMpyKG6OmNvgPJV6PEwL4lxvwvR7kLv5IQHK9lnva/Lm27O3mXBRh2jNPqJ4zIMrhs2FXHZtU8+KIsCbWbu4YNhpsp1CHo9JvBeccBbIiJJjGqiirLUpYepNPLUt3m42F03DZ/Bd27AVBmUSqoBJ7IH7QXv5uHU9w7lQzY/9guv+VqKvk6SJlJBPQUhHnXtDxvbS2UQlxCziBVK1txU4E2pmqJoV2JaalMM9rDi0XpVk4plhqDpthdpeQ59itu2qvZjaCcGM+mOWu4q5H5oRs8TWjgw8Uo0mKzqM2pJDAl8/kRkRMbUCKLePxD vault"
 }
 
 # --------------Vault instance---------
@@ -10,15 +10,15 @@ resource "aws_key_pair" "tform" {
 
 
 resource "aws_instance" "vault-instance" {
-  ami                  = "ami-03657b56516ab7912"
-  instance_type        = "t2.micro"
-  key_name             = "tform"
-  availability_zone    = "us-east-2a"
+  ami                  = "${var.vault_ami}"
+  instance_type        = "${var.instance_type}"
+  key_name             = "vault_key"
+  availability_zone    = "${var.avail_zone}"
 #  vpc_security_group_ids = ["${aws_security_group.gtx_vault_dev_sg.id}","${aws_security_group.gtx_vault_private_sg.id}"]
 #  subnet_id            = "${lookup(local.subnet_az_to_id, local.sorted_subnet_azs[count.index])}"
   root_block_device {
-    volume_size = "15"
-    volume_type = "gp2"
+    volume_size = "${var.inst_vol_size}"
+    volume_type = "${var.inst_vol_type}"
   }
 
   tags = {
@@ -50,7 +50,7 @@ resource "null_resource" "vault-mgmt" {
   connection {
     user = "ec2-user"
     agent = "false"
-    private_key = file("ssh_key/id_rsa")
+    private_key = file("ssh_key/vault")
     host = "${aws_instance.vault-instance.public_ip}"
   }
 
