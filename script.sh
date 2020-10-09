@@ -39,8 +39,6 @@ sudo su - vishnu -c "export VAULT_ADDR='http://127.0.0.1:8200'; export VAULT_TOK
 
 echo 
 echo "retrieving value of a key from secret"
-#sudo su - vishnu -c "NAME=`vault kv get -field=name secret/details`; echo "My name is $NAME" "
-#sudo su - vishnu -c 'vault kv get -field=name secret/details'
 sudo su - vishnu -c "export VAULT_ADDR='http://127.0.0.1:8200'; export VAULT_TOKEN=$TOKEN; vault login $TOKEN; \
                     echo -ne 'retrieved key value from vault   '; vault kv get -field=name secret/details"
 
