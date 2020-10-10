@@ -1,6 +1,6 @@
 aws_profile    = "default"
 aws_region     = "us-east-2"
-vault_ami      = "ami-03657b56516ab7912"
+vault_ami      = "ami-0a54aef4ef3b5f881"
 instance_type  = "t2.micro"
 avail_zone     = "us-east-2a"
 s3_bucket      = "s3-backend-vishnu-2"
