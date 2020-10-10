@@ -1,6 +1,6 @@
 #---------------Key Pair---------------
 
-resource "aws_key_pair" "vault_key" {
+resource "aws_key_pair" "terra_vault_key" {
   key_name   = "vault_key"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3gCQFj6TMaZ1qE8pGAmXPRD2ZlOxxdieOXXmd/lbT6+Irgoxq8LVzLzMsIw2+c7yOGdbJY5mKsy2NLrsRGRGX+05ycXp8EOQvymU1PpvTo7QeUE5XRSDOGOPR8q4psh9SzSQhppxaZRvcyoQC/1/phVJ+SPb4QR3wq0PdZyZl8x6WN1Hdv2bVcclhKNDSQpSNDR3K661sFPGnK+MupSH2yzXQ8rLqeAcJM6PkCASlQAB1cDUdBgbjRHIijS6cauPx8Fg8GJE/klaIjp8D8MVQIl15Doo6Lmdew3LHvo87oQLhbKocKY+eaJw2zlD9ixdxG5owfQjCzyRx+ju2zyQd ec2-user@ip-172-31-43-43.us-east-2.compute.internal"
 }
