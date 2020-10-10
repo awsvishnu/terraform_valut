@@ -29,15 +29,18 @@ TOKEN=`vault token create -policy=my-policy | grep -w 'token' | awk '{print $2}'
 echo 
 echo "Derived token is $TOKEN"
 
-echo "adding a new user - vishnu"
-sudo useradd vishnu
-echo 
-
 echo  "Installing httpd"
 sudo yum install httpd -y
-sudo systemct start httpd 
+sudo systemctl start httpd 
 
-echo "putting key value objects name and age in the secret" | tee -a /var/www/html/index.html
+
+echo "adding a new user - vishnu"
+sudo useradd vishnu
+sudo setfacl -m 'u:vishnu:rwx' /var/www/html
+echo 
+
+
+sudo echo "putting key value objects name and age in the secret" | tee -a /var/www/html/index.html
 sudo su - vishnu -c "export VAULT_ADDR='http://127.0.0.1:8200'; export VAULT_TOKEN=$TOKEN; vault login $TOKEN; \
                     vault kv put secret/details name=vishnu age=30 | tee -a /var/www/html/index.html"
 
