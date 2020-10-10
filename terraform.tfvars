@@ -1,5 +1,5 @@
 aws_profile    = "default"
-aws_region     = "us-east-1"
+aws_region     = "us-east-2"
 vault_ami      = "ami-098f16afa9edf40be"
 instance_type  = "t2.micro"
 avail_zone     = "us-east-2a"
