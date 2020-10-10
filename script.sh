@@ -33,13 +33,16 @@ echo "adding a new user - vishnu"
 sudo useradd vishnu
 echo 
 
-echo "putting key value objects in the secret"
-sudo su - vishnu -c "export VAULT_ADDR='http://127.0.0.1:8200'; export VAULT_TOKEN=$TOKEN; vault login $TOKEN; \
-                    vault kv put secret/details name=vishnu age=30"
+echo  "Installing httpd"
+sudo yum install httpd -y
+sudo systemct start httpd 
 
-echo 
+echo "putting key value objects name and age in the secret" | tee -a /var/www/html/index.html
+sudo su - vishnu -c "export VAULT_ADDR='http://127.0.0.1:8200'; export VAULT_TOKEN=$TOKEN; vault login $TOKEN; \
+                    vault kv put secret/details name=vishnu age=30 | tee -a /var/www/html/index.html"
+
 echo "retrieving value of a key from secret"
 sudo su - vishnu -c "export VAULT_ADDR='http://127.0.0.1:8200'; export VAULT_TOKEN=$TOKEN; vault login $TOKEN; \
-                    echo -ne 'retrieved key value from vault   '; vault kv get -field=name secret/details"
+                    echo -ne 'retrieved value of name key from vault is  '; vault kv get -field=name secret/details >> /var/www/html/index.html"
 
 
