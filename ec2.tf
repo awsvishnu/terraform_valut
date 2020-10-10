@@ -2,7 +2,7 @@
 
 resource "aws_key_pair" "terra_vault_key" {
   key_name   = "vault_key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3gCQFj6TMaZ1qE8pGAmXPRD2ZlOxxdieOXXmd/lbT6+Irgoxq8LVzLzMsIw2+c7yOGdbJY5mKsy2NLrsRGRGX+05ycXp8EOQvymU1PpvTo7QeUE5XRSDOGOPR8q4psh9SzSQhppxaZRvcyoQC/1/phVJ+SPb4QR3wq0PdZyZl8x6WN1Hdv2bVcclhKNDSQpSNDR3K661sFPGnK+MupSH2yzXQ8rLqeAcJM6PkCASlQAB1cDUdBgbjRHIijS6cauPx8Fg8GJE/klaIjp8D8MVQIl15Doo6Lmdew3LHvo87oQLhbKocKY+eaJw2zlD9ixdxG5owfQjCzyRx+ju2zyQd ec2-user@ip-172-31-43-43.us-east-2.compute.internal"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDI8ZYAu3MOCF61YFxWMAQVR1KG2XgtSjdqqsHcTl6Cmx1tJFDZLc6UlZuq6BEab8oiPViaGcw+3OKE+bzQ9MEJe50Y3Du0Gzpa76o9+6nUuUVkNW2RPxV6TukM6V2Bmo8AVCbuFqCM4h/AtdcMKBKm10u5/0fEH5BhHJfm8rt9/q4EK748pVAcopRjRT4delLfY6Kk4DMvecOWg72w08bHPoo58u2tvz1uOeDwSvNk41Xi7NesvvdmidI1u2cnaFPK10AnR6w2DREXCoB2lN1TuWG0vCj7CBG/p5YFCVxi9OvDwScw1cIZEf38S1AIsb0e90MOIciaIuS01klpyq5x ec2-user@ip-172-31-27-170.us-east-2.compute.internal"
 }
 
 # --------------Vault instance---------
