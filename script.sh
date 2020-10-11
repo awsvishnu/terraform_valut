@@ -31,7 +31,7 @@ echo ---------------
 echo "Creating the policy file"
 cat > /tmp/my-policy.hcl <<- "EOF"
 path "secret/data/details" {
-  capabilities = ["create", "update", "read", "update", "delete", "list"]
+  capabilities = ["create", "read", "update", "delete", "list"]
 }
 EOF
 else exit 1
