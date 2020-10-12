@@ -17,7 +17,7 @@ export VAULT_TOKEN=root
 echo 
 echo ---------------
 echo "Login with root token"
-vault login VAULT_TOKEN
+vault login $VAULT_TOKEN
 
 echo 
 echo ---------------
